@@ -1,3 +1,6 @@
+mod functions;
+
 fn main() {
-    println!("Hello, world!");
+    let tri = functions::Triangle::new(3,4,5);
+    println!("{}", tri.is_right())
 }
