@@ -15,6 +15,31 @@ impl Triangle{
         }
     }
 
+    // Setters for triangle
+    pub(crate) fn get_side_one(&self) -> i32{
+        self.side_a
+    }
+
+    pub(crate) fn get_side_two(&self) -> i32{
+        self.side_b
+    }
+    pub(crate) fn get_side_three(&self) -> i32{
+        self.side_c
+    }
+    // getters for triangle
+    pub(crate) fn set_side_one(&mut self, side: i32){
+        self.side_a = side
+
+    }
+    pub(crate) fn set_side_two(&mut self, side: i32){
+        self.side_b = side
+
+    }
+    pub(crate) fn set_side_three(&mut self, side: i32){
+        self.side_c = side
+
+    }
+
     // checks if all sides are equal
     pub(crate)  fn is_equilateral(&self) -> bool{
         self.side_a == self.side_b && self.side_b == self.side_c
