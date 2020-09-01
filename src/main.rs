@@ -1,6 +1,6 @@
 mod triangle;
 mod traits;
-mod exploring_strings;
+mod hash_map;
 
 use crate::traits::GetInfo;
 
@@ -34,10 +34,23 @@ fn main() {
         }
 
     } else if test_type == "3"{
-       exploring_strings::print_string("test one");
-        exploring_strings::print_string(&"test two".to_string());
 
-    } else {
+        // first two is the &str type, being immutable
+        let str_one = "Kitty";
+        let str_two = "Cat";
+        // last one is a String type and can be altered
+        let mut str_three = "".to_string();
+
+        // to add these together you must put the String type first
+        // then add the rest with the & in front of each one.
+        str_three = str_three + &str_one + &" " + &str_two;
+        println!("{}", str_three)
+
+
+    } else if test_type == "4" {
+
+
+    }else {
         println!("Not an Accepted Option.");
     }
 }
