@@ -1,6 +1,8 @@
 mod triangle;
 mod traits;
-use crate::traits::GetFullName;
+mod exploring_strings;
+
+use crate::traits::GetInfo;
 
 fn main() {
     let test_type: String = get_test_type();
@@ -18,18 +20,25 @@ fn main() {
     } else if test_type == "2"{
 
         // creates three new objects with the trait GetFullName
-        let man = traits::Person::new("Darren".to_string(), "Capper".to_string(), 27);
-        let canine = traits::Dog::new("Berk".to_string(), "Bomber".to_string(), 4);
-        let feline = traits::Cat::new("Vern".to_string(), "MacCaster".to_string(), 27);
+        let man = traits::Person::new("Darren", "Capper", 27);
+        let canine = traits::Dog::new("Berk", "Bomber", 4);
+        let feline = traits::Cat::new("Vern", "MacCaster", 27);
 
         // creates a vector of them and specifies that they share that trait,
         // dynamically.
-        let group: Vec<&dyn GetFullName> = vec! [&man, &canine, &feline];
+        let group: Vec<&dyn GetInfo> = vec! [&man, &canine, &feline];
         // iterates over them and prints their names
         for object in group.iter(){
             println!("{}", object.get_full_name());
+            println!("{}",object.get_age());
         }
 
+    } else if test_type == "3"{
+       exploring_strings::print_string("test one");
+        exploring_strings::print_string(&"test two".to_string());
+
+    } else {
+        println!("Not an Accepted Option.");
     }
 }
 
