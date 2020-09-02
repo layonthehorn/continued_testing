@@ -1,6 +1,7 @@
 mod hash_map;
 mod traits;
 mod triangle;
+mod taking_input;
 
 use crate::traits::GetInfo;
 
@@ -53,6 +54,18 @@ fn main() {
         str_three = str_three + &str_one + &" " + &str_two;
         println!("{}", str_three)
     } else if test_type == "4" {
+
+        println!("What is your name?");
+        let mut input =String::new();
+        std::io::stdin()
+            .read_line(&mut input)
+            .expect("failed to real line");
+        println!("Hello, {}, what's your favorite number?", input.trim());
+        let number = taking_input::get_number();
+        println!("I like, {} too.", number);
+
+
+
     } else {
         println!("Not an Accepted Option.");
     }
