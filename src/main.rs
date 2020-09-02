@@ -60,8 +60,10 @@ fn main() {
         std::io::stdin()
             .read_line(&mut input)
             .expect("failed to real line");
+        // trim removes the newline on the players name.
         println!("Hello, {}, what's your favorite number?", input.trim());
-        let number = taking_input::get_number();
+        // gets the number from the player
+        let number: f64 = taking_input::get_number("Please enter a number.");
         println!("I like, {} too.", number);
 
 
