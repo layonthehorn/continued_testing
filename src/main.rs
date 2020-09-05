@@ -2,10 +2,12 @@ mod hash_map;
 mod traits;
 mod triangle;
 mod taking_input;
+mod errors;
 
+use anyhow::{Result, Context};
 use crate::traits::GetInfo;
 
-fn main() {
+fn main() -> Result<()> {
     let test_type: String = get_test_type();
     if test_type == "1" {
         let mut tri = triangle::Triangle::new(3, 4, 5);
@@ -68,9 +70,15 @@ fn main() {
 
 
 
-    } else {
+    } else if test_type == "5"{
+        let number = errors::propagating_errors().context("Failed to convert to integer.")?;
+        println!("Converted number is {}", number);
+
+    }
+    else {
         println!("Not an Accepted Option.");
     }
+    Ok(())
 }
 
 fn get_test_type() -> String {
