@@ -4,6 +4,9 @@ mod triangle;
 mod taking_input;
 mod errors;
 
+use termcolor::{Color, ColorChoice,ColorSpec, StandardStream, WriteColor};
+use std::io::Write;
+
 use anyhow::{Result, Context};
 use crate::traits::GetInfo;
 
@@ -74,8 +77,16 @@ fn main() -> Result<()> {
         let number = errors::propagating_errors().context("Failed to convert to integer.")?;
         println!("Converted number is {}", number);
 
-    }
-    else {
+    } else if test_type == "6"{
+        let mut stdout = StandardStream::stdout(ColorChoice::Always);
+        stdout.set_color(ColorSpec::new().set_fg(Some(Color::Green)))?;
+        //writeln!(&mut stdout,"{}", format!("{}", 5))?;
+        println!("color test");
+        stdout.reset()?;
+        println!("no color test")
+
+
+    } else {
         println!("Not an Accepted Option.");
     }
     Ok(())
