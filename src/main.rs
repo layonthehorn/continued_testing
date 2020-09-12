@@ -3,6 +3,7 @@ mod traits;
 mod triangle;
 mod taking_input;
 mod errors;
+mod vectors;
 
 use termcolor::{Color, ColorChoice,ColorSpec, StandardStream, WriteColor};
 use std::io::Write;
@@ -86,6 +87,10 @@ fn main() -> Result<()> {
         println!("no color test")
 
 
+    } else if test_type == "7"{
+        let mut list: Vec<i32> = vec![12,23,4,4,1,67,78,9,91,100];
+        //vectors::forward_dismantle_vec(list);
+        vectors::selection_sort(list);
     } else {
         println!("Not an Accepted Option.");
     }
