@@ -1,15 +1,15 @@
+mod errors;
 mod hash_map;
+mod taking_input;
 mod traits;
 mod triangle;
-mod taking_input;
-mod errors;
 mod vectors;
 
-use termcolor::{Color, ColorChoice,ColorSpec, StandardStream, WriteColor};
 use std::io::Write;
+use termcolor::{Color, ColorChoice, ColorSpec, StandardStream, WriteColor};
 
-use anyhow::{Result, Context};
 use crate::traits::GetInfo;
+use anyhow::{Context, Result};
 
 fn main() -> Result<()> {
     let test_type: String = get_test_type();
@@ -60,9 +60,8 @@ fn main() -> Result<()> {
         str_three = str_three + &str_one + &" " + &str_two;
         println!("{}", str_three)
     } else if test_type == "4" {
-
         println!("What is your name?");
-        let mut input =String::new();
+        let mut input = String::new();
         std::io::stdin()
             .read_line(&mut input)
             .expect("failed to real line");
@@ -71,24 +70,18 @@ fn main() -> Result<()> {
         // gets the number from the player
         let number: f64 = taking_input::get_number("Please enter a number.");
         println!("I like, {} too.", number);
-
-
-
-    } else if test_type == "5"{
+    } else if test_type == "5" {
         let number = errors::propagating_errors().context("Failed to convert to integer.")?;
         println!("Converted number is {}", number);
-
-    } else if test_type == "6"{
+    } else if test_type == "6" {
         let mut stdout = StandardStream::stdout(ColorChoice::Always);
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::Green)))?;
         //writeln!(&mut stdout,"{}", format!("{}", 5))?;
         println!("color test");
         stdout.reset()?;
         println!("no color test")
-
-
-    } else if test_type == "7"{
-        let mut list: Vec<i32> = vec![12,23,4,4,1,67,78,9,91,100];
+    } else if test_type == "7" {
+        let mut list: Vec<i32> = vec![12, 23, 4, 4, 1, 67, 78, 9, 91, 100];
         //vectors::forward_dismantle_vec(list);
         vectors::selection_sort(list);
     } else {
