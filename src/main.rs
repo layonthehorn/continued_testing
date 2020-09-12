@@ -82,8 +82,11 @@ fn main() -> Result<()> {
         println!("no color test")
     } else if test_type == "7" {
         let mut list: Vec<i32> = vec![12, 23, 4, 4, 1, 67, 78, 9, 91, 100];
+        let length = (list.len() -1) as i32;
         //vectors::forward_dismantle_vec(list);
-        vectors::selection_sort(list);
+        //vectors::selection_sort(list);
+        vectors::quick_sort(&mut list, 0, length);
+        vectors::print_vec(list);
     } else {
         println!("Not an Accepted Option.");
     }

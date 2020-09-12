@@ -46,7 +46,30 @@ pub fn bubble_sort(mut vector: Vec<i32>) {
     }
     print_vec(vector);
 }
-fn print_vec(vector: Vec<i32>) {
+
+pub fn quick_sort(vector: &mut Vec<i32>,low: i32, high: i32) {
+    if low < high{
+        let pi = partition(vector, low, high);
+        quick_sort(vector, low, pi -1);
+        quick_sort(vector, pi + 1, high);
+
+    }
+}
+
+fn partition(mut vector: &mut Vec<i32>, low: i32, high: i32) -> i32{
+    let pivot = vector[high as usize];
+    let mut number = (low - 1);
+    for index in low..high{
+        if vector[index as usize] < pivot{
+            number += 1;
+            vector.swap(number as usize, index as usize);
+        }
+    }
+    vector.swap((number + 1) as usize, high as usize );
+    number + 1
+}
+
+pub fn print_vec(vector: Vec<i32>) {
     // just prints the values that are now sorted
     for value in vector.iter() {
         print!("{} ", value)
